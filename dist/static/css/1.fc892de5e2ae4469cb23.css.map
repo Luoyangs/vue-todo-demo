@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./client/components/common-header.vue?92de"],"names":[],"mappings":";AACA;AACA;AACA;AACA;AACA;AACA","file":"static/css/1.fc892de5e2ae4469cb23.css","sourcesContent":["\n.header {\n  background: #fff;\n  height: 50px;\n  line-height: 50px;\n  color: yellow;\n}\n"],"sourceRoot":""}
