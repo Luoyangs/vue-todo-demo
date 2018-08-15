@@ -4,7 +4,8 @@
 <style>
 .header{
   background: #fff;
-  height: 50px;
+  height: 60px;
   line-height: 50px;
+  font-size: 16px;
 }
 </style>

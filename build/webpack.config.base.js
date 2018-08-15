@@ -1,7 +1,5 @@
 const path = require('path')
-const webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -24,12 +22,8 @@ module.exports = {
         use: 'vue-loader'
       },
       {
-        test: /\.(c|sc)ss$/,
-        use: [
-          MiniCssExtractPlugin.loader, // replace ExtractTextPlugin.extract({..})
-          'css-loader',
-          'sass-loader'
-        ]
+        test: /\.jsx$/,
+        use: 'babel-loader'
       },
       {
         test: /\.(gif|png|jpg|svg)$/,

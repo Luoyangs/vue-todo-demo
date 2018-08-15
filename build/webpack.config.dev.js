@@ -1,26 +1,43 @@
 const merge = require('webpack-merge')
 const webpack = require('webpack')
+const path = require('path')
 const baseConfig = require('./webpack.config.base')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = merge(baseConfig, {
   devtool: 'inline-source-map',
-  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.(c|sc)ss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              sourceMap: true,
+              plugins: [
+                require('autoprefixer')()
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
   devServer: {
-    contentBase: './dist',
+    contentBase: path.resolve(__dirname, 'dist'),
     port: 8000,
     host: '0.0.0.0',
     hot: true,
-    open: true,
     overlay: {
-      errors: true
+      errors: true,
+      warnings: true
     }
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
-    })
+    new webpack.HotModuleReplacementPlugin()
   ]
 })

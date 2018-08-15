@@ -8,8 +8,29 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const posix = (filename) => path.posix.join('static', filename) 
 
 module.exports = merge(baseConfig, {
-  mode: 'production',
   devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.(c|sc)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader, // replace ExtractTextPlugin.extract({..})
+          'css-loader',
+          'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              sourceMap: true,
+              plugins: [
+                require('autoprefixer')()
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
   output: {
     path: path.join(__dirname, '../dist'),
     filename: posix('js/[name].[chunkhash].js'),
