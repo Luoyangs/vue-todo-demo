@@ -60,7 +60,7 @@ module.exports = merge(baseConfig, {
           chunks: "all",
           test: /[\\/]node_modules[\\/]/,
           name: "vendor",
-          minChunks: 1, //被不同entry引用次数(import),1次的话没必要提取 
+          minChunks: 2, //被不同entry引用次数(import),1次的话没必要提取 
           maxInitialRequests: 5,
           minSize: 0,
           priority: 100,
@@ -80,7 +80,7 @@ module.exports = merge(baseConfig, {
           name: 'styles',
           test: /\.(scss|css)$/,
           chunks: 'all',
-          minChunks: 1,
+          minChunks: 2,
           reuseExistingChunk: true,
           enforce: true
         }
@@ -91,9 +91,7 @@ module.exports = merge(baseConfig, {
       name: 'manifest'
     },
     // NoEmitOnErrorsPlugin 废弃, 在生产环境中默认开启该插件。
-    noEmitOnErrors: true,
+    noEmitOnErrors: true
     // [new UglifyJsPlugin({...})]
-    // production mode下面自动为true
-    minimizer: true,
   }
 })

@@ -4,13 +4,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   target: 'web',
-  entry: path.join(__dirname, '../client/main.js'),
+  entry: {
+    app: path.join(__dirname, '../client/main.js'),
+    vendor: [
+      'vue'
+    ]
+  },
   output: {
     filename: '[name].bundle.js',
     path: path.join(__dirname, '../dist'),
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json', '.jsx'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     }
@@ -22,8 +27,9 @@ module.exports = {
         use: 'vue-loader'
       },
       {
-        test: /\.jsx$/,
-        use: 'babel-loader'
+        test: /\.js$/,
+        use: ['babel-loader', 'cache-loader'],
+        exclude: /node_modules/
       },
       {
         test: /\.(gif|png|jpg|svg)$/,
@@ -32,7 +38,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 1024,
-              name: '[name].[hash:8].[ext]'
+              name: 'static/images/[name].[hash:8].[ext]'
             }
           }
         ]

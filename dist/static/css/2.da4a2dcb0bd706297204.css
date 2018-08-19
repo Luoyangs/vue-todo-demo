@@ -1,8 +1,5 @@
-<template>
-  <div class="header">TODO LIST</div>
-</template>
-<style lang="scss">
-.header{
+
+.header {
   position: relative;
   top: 100px;
   height: 60px;
@@ -11,4 +8,6 @@
   text-align: center;
   color: #6d6d6d;
 }
-</style>
+
+
+/*# sourceMappingURL=2.da4a2dcb0bd706297204.css.map*/

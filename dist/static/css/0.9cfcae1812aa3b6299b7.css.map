@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./client/app.vue?4488"],"names":[],"mappings":";AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"static/css/0.9cfcae1812aa3b6299b7.css","sourcesContent":["\ndiv {\n  margin: 20px;\n}\nbody {\n  background: #ff33ff;\n}\n.test {\n  color: red;\n}\n"],"sourceRoot":""}

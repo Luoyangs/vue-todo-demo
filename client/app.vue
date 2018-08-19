@@ -1,7 +1,8 @@
 <template>
-  <div class="test">
-    <common-header></common-header>
-    {{text}}
+  <div id="app">
+    <common-header/>
+    <todo-list/>
+    <common-footer/>
   </div>
 </template>
 
@@ -13,16 +14,21 @@ export default {
     }
   },
   components: {
-    CommonHeader: () => import('./components/common-header.vue')
+    CommonHeader: () => import('./components/common-header.vue'),
+    CommonFooter: () => import('./components/common-footer.vue'),
+    TodoList: () => import('./views/todo/list.vue')
   }
 }
 </script>
 
  <style lang="scss">
- @import './assets/styles/base.scss';
- @import './assets/styles/test.scss';
- .test{
-   color: red;
+ #app{
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, .35);
  }
  </style>
  
